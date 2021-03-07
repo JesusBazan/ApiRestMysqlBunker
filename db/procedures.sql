@@ -125,3 +125,34 @@ END
 
 $$
 
+-- PROCEDIMIENTO AGREGAR O ACTUALIZAR UN LIBRO
+
+DELIMITER $$
+
+CREATE PROCEDURE `AddOrEditLibro` (
+  IN _id INT,
+  IN _titulo VARCHAR(45),
+  IN _autor VARCHAR(45),
+  IN _imagen VARCHAR(300),
+  IN _fk_materia INT
+)
+BEGIN 
+  IF _id = 0 THEN
+    INSERT INTO libro (titulo, autor, imagen, fk_materia)
+    VALUES (_titulo, _autor, _imagen, _fk_materia);
+
+    SET _id = LAST_INSERT_ID();
+  ELSE
+    UPDATE libro
+    SET
+    titulo = _titulo,
+    autor = _autor,
+    imagen = _imagen,
+    fk_materia = _fk_materia
+    WHERE id_libro = _id;
+  END IF;
+
+  SELECT _id AS 'id';
+END
+
+$$
