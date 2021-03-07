@@ -94,3 +94,34 @@ BEGIN
 END
 
 $$
+
+-- PROCEDIMIENTO AGREGAR O ACTUALIZAR UNA MATERIA
+
+DELIMITER $$
+
+CREATE PROCEDURE `AddOrEditMateria` (
+  IN _id INT,
+  IN _nombre VARCHAR(45),
+  IN _descripccion VARCHAR(300),
+  IN _imagen VARCHAR(300)
+)
+BEGIN 
+  IF _id = 0 THEN
+    INSERT INTO materia (nombre, descripccion, imagen)
+    VALUES (_nombre, _descripccion, _imagen);
+
+    SET _id = LAST_INSERT_ID();
+  ELSE
+    UPDATE materia
+    SET
+    nombre = _nombre,
+    descripccion = _descripccion,
+    imagen = _imagen
+    WHERE id_materia = _id;
+  END IF;
+
+  SELECT _id AS 'id';
+END
+
+$$
+

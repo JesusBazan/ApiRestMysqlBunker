@@ -54,8 +54,8 @@ SELECT * FROM anuncio;
 CREATE TABLE materia (
   id_materia INT(11) NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(45) DEFAULT NULL,
-  descripccion VARCHAR(45) DEFAULT NULL,
-  imagen VARCHAR(45) DEFAULT NULL,
+  descripccion VARCHAR(300) DEFAULT NULL,
+  imagen VARCHAR(300) DEFAULT NULL,
   PRIMARY KEY(id_materia)
 );
 

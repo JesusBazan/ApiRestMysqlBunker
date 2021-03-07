@@ -11,6 +11,8 @@ app.use(express.json());
 app.use(require('./routes/employees'));
 app.use(require('./routes/usuarios'));
 app.use(require('./routes/anuncios'));
+app.use(require('./routes/materias'));
+
 
 
 // Starting the server
