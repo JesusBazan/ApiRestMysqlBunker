@@ -10,6 +10,8 @@ app.use(express.json());
 // Routes
 app.use(require('./routes/employees'));
 app.use(require('./routes/usuarios'));
+app.use(require('./routes/anuncios'));
+
 
 // Starting the server
 app.listen(app.get('port'), () => {

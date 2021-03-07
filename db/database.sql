@@ -42,7 +42,7 @@ CREATE TABLE anuncio (
   id_anuncio INT(11) NOT NULL AUTO_INCREMENT,
   titulo VARCHAR(45) DEFAULT NULL,
   autor VARCHAR(45) DEFAULT NULL,
-  descripccion VARCHAR(45) DEFAULT NULL,
+  descripccion VARCHAR(300) DEFAULT NULL,
   imagen VARCHAR(300) DEFAULT NULL,
   PRIMARY KEY(id_anuncio)
 );

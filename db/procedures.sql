@@ -62,3 +62,35 @@ BEGIN
 END
 
 $$
+
+-- PROCEDIMINETO AGREGAR O EDITAR ANUNCIO
+
+DELIMITER $$
+
+CREATE PROCEDURE `AddOrEditAnuncio` (
+  IN _id INT,
+  IN _titulo VARCHAR(45),
+  IN _autor VARCHAR(45),
+  IN _descripccion VARCHAR(45),
+  IN _imagen VARCHAR(300)
+)
+BEGIN 
+  IF _id = 0 THEN
+    INSERT INTO anuncio (titulo, autor, descripccion, imagen)
+    VALUES (_titulo, _autor, _descripccion, _imagen);
+
+    SET _id = LAST_INSERT_ID();
+  ELSE
+    UPDATE anuncio
+    SET
+    titulo = _titulo,
+    autor = _autor,
+    descripccion = _descripccion,
+    imagen = _imagen
+    WHERE id_anuncio = _id;
+  END IF;
+
+  SELECT _id AS 'id';
+END
+
+$$
