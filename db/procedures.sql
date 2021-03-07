@@ -27,6 +27,8 @@ END
 
 -- PRECEDIMIENTO AGREGAR O EDITAR USUARIO
 
+DELIMITER $$
+
 CREATE PROCEDURE `AddOrEditUsuario` (
   IN _id INT,
   IN _username VARCHAR(45),
@@ -35,7 +37,7 @@ CREATE PROCEDURE `AddOrEditUsuario` (
   IN _correo VARCHAR(45),
   IN _rol VARCHAR(45),
   IN _contrasenia VARCHAR(300),
-  IN _foto VARCHAR(300),
+  IN _foto VARCHAR(300)
 )
 BEGIN 
   IF _id = 0 THEN
@@ -58,3 +60,5 @@ BEGIN
 
   SELECT _id AS 'id';
 END
+
+$$

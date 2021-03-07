@@ -73,7 +73,7 @@ CREATE TABLE libro (
   PRIMARY KEY(id_libro)
 );
 
-SELECT * FROM materia;
+SELECT * FROM libro;
 
 -- TABLA TEMA
 
