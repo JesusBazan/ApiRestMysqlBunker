@@ -8,12 +8,12 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.json());
 
 // Routes
-app.use(require('./routes/employees'));
-app.use(require('./routes/usuarios'));
-app.use(require('./routes/anuncios'));
-app.use(require('./routes/materias'));
-app.use(require('./routes/libros'));
-app.use(require('./routes/temas'));
+app.use(require('./src/routes/employees'));
+app.use(require('./src/routes/usuarios'));
+app.use(require('./src/routes/anuncios'));
+app.use(require('./src/routes/materias'));
+app.use(require('./src/routes/libros'));
+app.use(require('./src/routes/temas'));
 
 
 
