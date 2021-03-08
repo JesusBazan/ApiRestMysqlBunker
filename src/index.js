@@ -13,6 +13,7 @@ app.use(require('./routes/usuarios'));
 app.use(require('./routes/anuncios'));
 app.use(require('./routes/materias'));
 app.use(require('./routes/libros'));
+app.use(require('./routes/temas'));
 
 
 

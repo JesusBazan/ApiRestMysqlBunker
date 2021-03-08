@@ -156,3 +156,33 @@ BEGIN
 END
 
 $$
+
+-- PROCEDIMIENTO AGREGAR O ACTUALIZAR UN TEMAS
+
+DELIMITER $$
+
+CREATE PROCEDURE `AddOrEditTema` (
+  IN _id INT,
+  IN _nombre VARCHAR(45),
+  IN _descripcion VARCHAR(300),
+  IN _fk_materia INT
+)
+BEGIN 
+  IF _id = 0 THEN
+    INSERT INTO tema (nombre, descripcion, fk_materia)
+    VALUES (_nombre, _descripcion, _fk_materia);
+
+    SET _id = LAST_INSERT_ID();
+  ELSE
+    UPDATE tema
+    SET
+    nombre = _nombre,
+    descripcion = _descripcion,
+    fk_materia = _fk_materia
+    WHERE id_tema = _id;
+  END IF;
+
+  SELECT _id AS 'id';
+END
+
+$$

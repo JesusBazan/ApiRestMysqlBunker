@@ -80,7 +80,7 @@ SELECT * FROM libro;
 CREATE TABLE tema (
   id_tema INT(11) NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(45) DEFAULT NULL,
-  descripcion VARCHAR(45) DEFAULT NULL,
+  descripcion VARCHAR(300) DEFAULT NULL,
   fk_materia INT(11) DEFAULT NULL,
   CONSTRAINT fk_materia_tma FOREIGN KEY (fk_materia) REFERENCES materia (id_materia),
   PRIMARY KEY(id_tema)
