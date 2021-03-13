@@ -87,4 +87,23 @@ router.put('/actualizarUsuario/:id', (req, res) => {
   });
 });
 
+
+// LOGEARSE
+router.post('/iniciarSesion', (req, res) => {
+  const {username, contrasenia} = req.body;
+  console.log(username, contrasenia);
+  const query = `
+  SET @username = ?;
+  SET @contrasenia = ?;
+  CALL IniciarSesion1(@username,@contrasenia);
+  `;
+  mysqlConnection.query(query, [username, contrasenia], (err, rows, fields) => {
+    if(!err) {
+      res.json(rows);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
 module.exports = router;
