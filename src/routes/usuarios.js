@@ -99,7 +99,7 @@ router.post('/iniciarSesion', (req, res) => {
   `;
   mysqlConnection.query(query, [username, contrasenia], (err, rows, fields) => {
     if(!err) {
-      res.json(rows);
+      res.json(rows[2]);
     } else {
       console.log(err);
     }
