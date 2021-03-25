@@ -95,7 +95,7 @@ router.post('/iniciarSesion', (req, res) => {
   const query = `
   SET @username = ?;
   SET @contrasenia = ?;
-  CALL IniciarSesion1(@username,@contrasenia);
+  CALL IniciarSesion2(@username,@contrasenia);
   `;
   mysqlConnection.query(query, [username, contrasenia], (err, rows, fields) => {
     if(!err) {
