@@ -247,3 +247,26 @@ BEGIN
 END
 
 $$
+
+-- PRECEDIMIENTO PARA TRAER LA VISTA DE REPORTES
+
+DELIMITER $$
+
+CREATE PROCEDURE `GetTableReportes` (IN _rol INT)
+BEGIN
+	SET @posicion = 0;
+    IF _rol = 0 THEN
+		SELECT @posicion:=@posicion+1 as 'No.', usu.username, usu.nombres, usu.apellidos, usu.rol, rep.herramienta, rep.accion, rep.created_at
+		from reportes as rep
+		inner join usuario as usu
+		ON rep.fk_usuario = usu.id_usuario
+        WHERE usu.rol = 'alumno';
+    ELSE
+		SELECT @posicion:=@posicion+1 as 'No.', usu.username, usu.nombres, usu.apellidos, usu.rol, rep.herramienta, rep.accion, rep.created_at
+		from reportes as rep
+		inner join usuario as usu
+		ON rep.fk_usuario = usu.id_usuario;
+	END IF;
+END
+
+$$
