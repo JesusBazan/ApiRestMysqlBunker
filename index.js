@@ -14,6 +14,7 @@ app.use(require('./src/routes/anuncios'));
 app.use(require('./src/routes/materias'));
 app.use(require('./src/routes/libros'));
 app.use(require('./src/routes/temas'));
+app.use(require('./src/routes/reportes'));
 
 
 

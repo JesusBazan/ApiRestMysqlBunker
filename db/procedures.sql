@@ -186,3 +186,36 @@ BEGIN
 END
 
 $$
+
+
+-- PRECEDIMIENTO AGREGAR O EDITAR REPORTE
+
+DELIMITER $$
+
+CREATE PROCEDURE `AddOrEditReporte` (
+  IN _id INT,
+  IN _fk_usuario INT,
+  IN _created_at TIMESTAMP,
+  IN _herramienta VARCHAR(50),
+  IN _accion VARCHAR(50)
+)
+BEGIN 
+  IF _id = 0 THEN
+    INSERT INTO reportes (fk_usuario, herramienta, accion)
+    VALUES (_fk_usuario, _herramienta, _accion);
+
+    SET _id = LAST_INSERT_ID();
+  ELSE
+    UPDATE reportes
+    SET
+    fk_usuario = _fk_usuario,
+    created_at = _created_at,
+    herramienta = _herramienta,
+    accion = _accion
+    WHERE id = _id;
+  END IF;
+
+  SELECT _id AS 'id';
+END
+
+$$
