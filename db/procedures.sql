@@ -219,3 +219,31 @@ BEGIN
 END
 
 $$
+
+-- PRECEDIMIENTO AGREGAR O EDITAR SESIONES
+
+DELIMITER $$
+
+CREATE PROCEDURE `AddOrEditSesion` (
+  IN _id INT,
+  IN _fk_usuario INT,
+  IN _created_at TIMESTAMP
+)
+BEGIN 
+  IF _id = 0 THEN
+    INSERT INTO sesion (fk_usuario)
+    VALUES (_fk_usuario);
+
+    SET _id = LAST_INSERT_ID();
+  ELSE
+    UPDATE sesion
+    SET
+    fk_usuario = _fk_usuario,
+    created_at = _created_at
+    WHERE id = _id;
+  END IF;
+
+  SELECT _id AS 'id';
+END
+
+$$
