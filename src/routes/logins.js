@@ -34,4 +34,23 @@ router.post('/insertarSesion', (req, res) => {
   
   });
 
+
+//GET TABLE REPORTES
+router.post('/getTablaSesiones', (req, res) => {
+  const {rol} = req.body;
+  console.log(rol);
+  const query = `
+    SET @rol = ?;
+    CALL GetTableSesiones(@rol);
+  `;
+  mysqlConnection.query(query, [rol], (err, rows, fields) => {
+    if(!err) {
+      res.json(rows[1]);
+    } else {
+      console.log(err);
+    }
+  });
+
+});
+
 module.exports = router;
