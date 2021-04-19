@@ -270,3 +270,24 @@ BEGIN
 END
 
 $$
+
+-- PRECEDIMIENTO PARA OBTENER LA VISTA DE LOS USUARIOS
+
+DELIMITER $$
+
+CREATE PROCEDURE `GetTableUsuarios` (IN _rol INT)
+BEGIN
+	SET @posicion = 0;
+    IF _rol = 0 THEN
+		SELECT @posicion:=@posicion+1 as 'posicion', username, nombres, apellidos, correo, rol
+		from usuario
+		WHERE rol = 'alumno';
+    ELSE
+		SELECT @posicion:=@posicion+1 as 'posicion', username, nombres, apellidos, correo, rol
+		from usuario;
+	END IF;
+END
+
+$$
+
+call GetTableUsuarios (0);

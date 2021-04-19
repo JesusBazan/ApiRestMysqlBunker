@@ -106,4 +106,21 @@ router.post('/iniciarSesion', (req, res) => {
   });
 });
 
+// TABLA VISTA USUARIOS
+router.post('/getTablaUsuarios', (req, res) => {
+  const {rol} = req.body;
+  console.log(rol);
+  const query = `
+  SET @rol = ?;
+  CALL GetTableUsuarios(@rol);
+  `;
+  mysqlConnection.query(query, [rol], (err, rows, fields) => {
+    if(!err) {
+      res.json(rows[1]);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
 module.exports = router;
