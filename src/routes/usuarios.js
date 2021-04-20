@@ -106,6 +106,24 @@ router.post('/iniciarSesion', (req, res) => {
   });
 });
 
+// USUARIO ACTUAL
+router.post('/usuarioActual', (req, res) => {
+  const {username, contrasenia} = req.body;
+  console.log(username, contrasenia);
+  const query = `
+  SET @username = ?;
+  SET @contrasenia = ?;
+  CALL GetUsuarioActual(@username,@contrasenia);
+  `;
+  mysqlConnection.query(query, [username, contrasenia], (err, rows, fields) => {
+    if(!err) {
+      res.json(rows[2]);
+    } else {
+      console.log(err);
+    }
+  });
+});
+
 // TABLA VISTA USUARIOS
 router.post('/getTablaUsuarios', (req, res) => {
   const {rol} = req.body;

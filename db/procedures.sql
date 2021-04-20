@@ -291,3 +291,21 @@ END
 $$
 
 call GetTableUsuarios (0);
+
+-- PRECEDIMIENTO PARA OBTENER USUARIO ACTUAL
+
+DELIMITER $$
+
+CREATE PROCEDURE `GetUsuarioActual` (
+	IN _username VARCHAR(45),
+    IN _contrasenia VARCHAR(45)
+    )
+BEGIN
+		SELECT *
+		from usuario
+		WHERE username = _username and contrasenia = _contrasenia;
+END
+
+$$
+
+call GetUsuarioActual ('conniel99','12345');
